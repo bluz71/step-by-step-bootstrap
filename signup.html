@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/jquery-1.12.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <script>
+    $(document).ready(function() {
+      var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w+)+$/;
+
+      $("#submitButton").click(function(e) {
+        if ($("#inputName").val() == "") {
+          e.preventDefault();
+          $("#inputNameFormGroup").addClass("has-error");
+        }
+        else if ($("#inputEmail").val() == "") {
+          e.preventDefault();
+          $("#inputEmailFormGroup").addClass("has-error");
+        }
+        else if (!emailReg.test($("#inputEmail").val())) {
+          e.preventDefault();
+          $("#inputEmailFormGroup").addClass("has-error");
+        }
+        else if ($("#inputPassword").val() === "") {
+          e.preventDefault();
+          $("#inputPasswordFormGroup").addClass("has-error");
+        }
+        else if ($("#inputRepeastPassword").val() === "") {
+          e.preventDefault();
+          $("#inputRepeatPasswordFormGroup").addClass("has-error");
+        }
+        else if ($("#inputPassword").val() != $("#inputRepeatPassword").val()) {
+          e.preventDefault();
+          $("#inputPasswordFormGroup").addClass("has-error");
+          $("#inputRepeatPasswordFormGroup").addClass("has-error");
+
+          $("#placeForAlert").addClass("alert alert-warning alert-dismssable");
+          $("#placeForAlert").html("<button type='button' class='close' data-dismiss='alert'><span class='glyphicon glyphicon-remove'></span></button> Password and Repeat password must be the same");
+        }
+        else {
+          $("#signupForm").submit();
+        }
+      });
+    });
+  </script>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">MyWebsite</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page A</a></li>
+            <li><a href="#">Page B</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page C<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Page C - 1</a></li>
+                <li><a href="#">Page C - 2</a></li>
+                <li><a href="#">Page C - 3</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Sign Up</h1>
+      <form action="#" method="post">
+        <div class="row">
+          <div class="col-md-4 col-lg-4">
+            <div id="inputNameFormGroup" class="form-group">
+              <label for="inputName"> Name</label>
+              <input type="text" class="form-control" id="inputName" placeholder="Enter your name">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-lg-3">
+            <div id="inputEmailFormGroup" class="form-group">
+              <label for="inputEmail"> Email Address</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email address">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 col-lg-2">
+            <div id="inputPasswordFormGroup" class="form-group">
+              <label for="inputPassword"> Password</label>
+              <input type="password" class="form-control" id="inputPassword">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 col-lg-2">
+            <div id="inputRepeatPasswordFormGroup" class="form-group">
+              <label for="inputRepeatPassword"> Repeat Password</label>
+              <input type="password" class="form-control" id="inputRepeatPassword">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div id="placeForAlert" class="col-md-4 col-lg-4"></div>
+        </div>
+
+        <p><button type="submit" id="submitButton" class="btn btn-primary">Submit</button></p>
+      </form>
+    </div>
+  </body>
+</html>
