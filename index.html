@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="custom.css">
     <script src="bootstrap/jquery-1.12.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#tooltipLink').tooltip();
+      });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
@@ -118,6 +123,7 @@
           amet, bibendum consequat mi. Quisque tempus ultricies justo porta
           fermentum. Maecenas vel tortor ac enim sollicitudin fringilla. Maecenas ut
           dictum nulla. Vestibulum semper id odio egestas interdum.</p>
+          <a href="https://www.google.com" id="tooltipLink" data-toggle="tooltip" title="This is a link to Google!">Google</a>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
