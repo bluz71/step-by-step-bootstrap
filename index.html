@@ -7,8 +7,24 @@
     <script src="bootstrap/jquery-1.12.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script>
+      function progressBar() {
+        var counter=0;
+        var increaseFactor=5;
+        $("#btnAddProgress").click(function() {
+          counter += increaseFactor;
+          if (counter > 100) {
+            counter = 0;
+          }
+          $("#myProgressBar").css("width", counter + "%");
+          $("#myProgressBar").text(counter + "%");
+        })
+      };
       $(document).ready(function() {
         $('#tooltipLink').tooltip();
+        $("#popoverLink").popover({
+          trigger: "hover"
+        });
+        progressBar();
       });
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,10 +123,19 @@
           </table>
         </div>
       </div>
+      <div class="container">
+        <div class="progress">
+          <div id="myProgressBar" class="progress-bar" style="width: 0%;"></div>
+        </div>
+        <div>
+          <button class="btn btn-primary" id="btnAddProgress">Add Progress</button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
           <img src="toys.jpg" class="img-responsive img-thumbnail">
           <p>(1) Fusce gravida elit velit. Maecenas id sapien ut sapien pulvinar
+          <a href="#" id="popoverLink" data-toggle="popover" title="Popover Title" data-content="The content of the popover">Popover</a>
           pulvinar. Suspendisse potenti. Integer mi nunc, pretium ac leo sit amet,
           tincidunt pretium magna. Cras hendrerit orci ex, nec sagittis ex imperdiet
           eget. Mauris congue purus ac ullamcorper gravida. Proin eget aliquet leo.
